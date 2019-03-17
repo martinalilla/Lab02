@@ -70,7 +70,7 @@ public class AlienController {
     				txtResult.appendText("Parola aggiunta!");
     			}
     			if(b==true) {
-    				txtResult.appendText("Parola modificata!");
+    				txtResult.appendText("nuova traduzione aggiunta!");
     			}
     		}
     		
@@ -92,7 +92,7 @@ public class AlienController {
         		txtResult.clear();
         		txtWord.clear();
         		
-        		txtResult.appendText("Traduzione: "+str);
+        		txtResult.appendText("Traduzioni:"+"\n"+str);
     			}
     		}
     		

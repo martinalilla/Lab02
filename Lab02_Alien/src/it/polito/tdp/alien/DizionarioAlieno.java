@@ -4,6 +4,8 @@ import java.util.*;
 public class DizionarioAlieno {
 	
 	private LinkedList<Word> dizionario=new LinkedList<Word>();
+	private LinkedList<WordEnhanced> dizionariomultiplo=new LinkedList<WordEnhanced>();
+	
 	
 	public void stampa() {
 		for(Word s: dizionario) {
@@ -15,24 +17,24 @@ public class DizionarioAlieno {
 		parola=parola.toLowerCase();
 		traduzione.toLowerCase();
 		Word temp=new Word(parola, traduzione);
+		WordEnhanced w=new WordEnhanced(parola);
+		//w.addWord(traduzione);
+		//dizionariomultiplo.add(w);
 		boolean trovata=false;
-		for(Word s:dizionario) {
-			/*if(s.getParola().compareTo(parola)!=0) {
-				dizionario.add(temp);
-				
-			}*/
+		for(WordEnhanced s:dizionariomultiplo) {
+			
 			if(s.getParola().compareTo(parola)==0) {
-				s.aggiorna(temp.getTraduzione());
+				//s.aggiorna(temp.getTraduzione());
+				s.addWord(traduzione);
 				trovata=true;
 				break;
 				
 			}
-			
-			
-			
+				
 		}
 		if(trovata==false) {
-			dizionario.add(temp);
+			w.addWord(traduzione);
+			dizionariomultiplo.add(w);
 		}
 		return trovata;
 		
@@ -50,9 +52,9 @@ public class DizionarioAlieno {
 	
 	public String translateWord(String parola) {
 		parola.toLowerCase();
-		for(Word s:dizionario) {
+		for(WordEnhanced s:dizionariomultiplo) {
 			if(s.getParola().compareTo(parola)==0) {
-				return s.getTraduzione();
+				return s.traduzioni();
 			}
 		}
 		return null;
